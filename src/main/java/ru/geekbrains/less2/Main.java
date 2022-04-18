@@ -4,9 +4,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext("ru.geekbrains.less2");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
         ProductService productService = context.getBean(ProductService.class);
-        System.out.println(productService.getBox().getColor());
+        productService.getProduct(2l);
+        System.out.println(productService.getProduct(2l).getTitle());
 //        Box box= context.getBean(Box.class);
 //        box.setColor("green");
 //        Box box2 = context.getBean(Box.class);
