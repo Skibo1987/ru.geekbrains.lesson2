@@ -1,14 +1,17 @@
 package ru.geekbrains.less2;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Priority;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 @Component
-public class ProductInMemoryRepository {
+@Primary
+public class ProductInMemoryRepository implements Repository {
 
     private List<Product> productList;
 
@@ -22,7 +25,7 @@ public class ProductInMemoryRepository {
         ));
     }
 
-
+    @Override
     public Product findById(Long id){
         return productList.stream().filter(p -> p.getId().equals(id)).findFirst().orElseThrow(RuntimeException::new);
     }

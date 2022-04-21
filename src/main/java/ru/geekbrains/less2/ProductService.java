@@ -2,6 +2,7 @@ package ru.geekbrains.less2;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.io.FileOutputStream;
@@ -11,9 +12,10 @@ import java.io.IOException;
 public class ProductService {
 
     @Autowired
-    private ProductInMemoryRepository productInMemoryRepository;
+//    @Qualifier("productInMemoryRepository")
+    private Repository repository;
 
     public Product getProduct(Long id){
-       return productInMemoryRepository.findById(id);
+       return repository.findById(id);
     }
 }
